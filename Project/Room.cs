@@ -18,7 +18,8 @@ namespace Frozen.Project
         {
             Name = name; 
             Description = description;
-            var Room = new List<Room>();
+            Items = new List<Item>();
+            Directions = new Dictionary<string, Room>();
         }
         public void addDirection(Room room, string direction)
         {

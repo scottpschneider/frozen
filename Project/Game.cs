@@ -6,8 +6,8 @@ namespace Frozen.Project
     public class Game : IGame
     {
         public List<Room> Rooms = new List<Room>();
-        public Room CurrentRoom { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-        public Player CurrentPlayer { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+        public Room CurrentRoom { get; set; }
+        public Player CurrentPlayer { get; set; }
 
         public void Reset()
         {
@@ -17,8 +17,6 @@ namespace Frozen.Project
         public void move(string selection)
         {
             
-            bool valid = true;
-            while (valid);
             switch (selection)
       {
           case "North":
@@ -41,6 +39,7 @@ namespace Frozen.Project
             Room room1 = new Room("Arrendale", "you arrive in a frozen tundra...");
             Room room2 = new Room("Elsa's Castle", "you follow the icey steps up to a quiet castle");
             Room room3 = new Room("Ice Dance", "you are now at the ice-dance, the center of attention!");
+            room0.addDirection( room2, "North");
             room1.addDirection( room2, "North");
             room2.addDirection( room1, "South");
             Rooms.Add(room1);
