@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace Frozen.Project
@@ -12,15 +13,26 @@ namespace Frozen.Project
         {
             throw new System.NotImplementedException();
         }
-
+    
         public void move(string selection)
         {
+            
             bool valid = true;
             while (valid);
-            if (selection == "North")
-            {
-                CurrentRoom = CurrentRoom.Directions[selection];
-            }
+            switch (selection)
+      {
+          case "North":
+          case "N":
+              setCurrentRoom(CurrentRoom.Directions["North"]);
+              break;
+          case "South":
+          case "S":
+              setCurrentRoom(CurrentRoom.Directions["South"]);
+              break;
+          default:
+              Console.WriteLine("I don't recognize that direction.");
+              break;
+      }
         }
         //must initialize rooms bfore 
         public void Setup()
