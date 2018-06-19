@@ -22,54 +22,55 @@ namespace Frozen.Project
             {
                 case "north":
                 case "n":
-                    setCurrentRoom(CurrentRoom.Directions["North"]);
+                    setCurrentRoom(CurrentRoom.Directions["north"]);
                     //  Here i want to display Room.room
                     break;
                 case "south":
                 case "s":
-                    setCurrentRoom(CurrentRoom.Directions["South"]);
+                    setCurrentRoom(CurrentRoom.Directions["south"]);
                     break;
                 default:
                     Console.WriteLine("I don't recognize that direction.");
                     break;
             }
         }
-           public bool playing = true;
+        public bool playing = true;
         public void Play()
         {
             while (playing)
             {
                 System.Console.WriteLine("Would you like to go North(N) or South(S)?");
-                            
-            string input = Console.ReadLine();
-            string[] inputArray = input.Split(" ");
-            switch (inputArray[0].ToLower())
-            {
-                case "go":
-                    move(inputArray[1]);
-                    break;
-                case "Use":
-                    UseItem(inputArray[1]);
-                    break;
-                case "Take":
-                    TakeItem(inputArray[1]);
-                    break;
-                case "Help":
-                    Help();
-                    break;
-                case "Quit":
-                    Quit();
-                    break;
-                   
-                    default: 
-                    Console.WriteLine("invalid command");
-                    break;
-            }      
-            }
-            {
+
+                string input = Console.ReadLine();
+                string[] inputArray = input.Split(" ");
+                switch (inputArray[0].ToLower())
+                {
+                    case "go":
+                        move(inputArray[1]);
+                        //CurrentRoom = CurrentRoom.Go(inputArray[i] != null);
+                        break;
+                    case "Use":
+                        UseItem(inputArray[1]);
+                        break;
+                    case "Take":
+                        TakeItem(inputArray[1]);
+                        break;
+                    case "Help":
+                        Help();
+                        break;
+                        case "look":
+                        Look();
+                        break;
+                    case "Quit":
+                        Quit();
+                        break;
+
+                    default:
+                        Console.WriteLine("invalid command");
+                        break;
+                }
 
             }
-            //     CurrentRoom = CurrentRoom.move(input[i] != null );
             // }
             // else
             // {
@@ -79,7 +80,7 @@ namespace Frozen.Project
             // take user input
             // input.split(")
             // switch input[0]
-            
+
             // CurrentRoom = CurrentRoom.Go(imput[1] does not equal null)
             // else {System.Console.WriteLine("Whoops no way")};
             // }
@@ -123,13 +124,14 @@ namespace Frozen.Project
         }
         public void TakeItem(string itemName)
         {
-            TakeItem(itemName);
+            //items.find(itemName);
             //need to call TakeItem function from room.cs line 33
             System.Console.WriteLine($"You have taken the {""}");
         }
+        
         public void Help()
         {
-            System.Console.WriteLine("You must move");
+            System.Console.WriteLine("You can choose from the following actions: go, use, take, help, or quit.");
         }
         public void Quit()
         {
@@ -138,7 +140,13 @@ namespace Frozen.Project
         public void setCurrentRoom(Room room)
         {
             CurrentRoom = room;
+            System.Console.WriteLine(CurrentRoom.Description);
         }
+        public void Look()
+            {
+                System.Console.WriteLine($"{CurrentRoom.Description}");
+            }
+        
 
     }
 }

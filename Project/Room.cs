@@ -38,6 +38,7 @@ namespace Frozen.Project
             }
             return null;
         }
+        
         public void addDirection(Room room, string direction)
         {
             Directions.Add(direction, room);

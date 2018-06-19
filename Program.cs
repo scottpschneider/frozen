@@ -10,8 +10,8 @@ namespace Frozen.Project
             Game game = new Game();
             game.Setup();
             Console.Clear();
-            game.Play();
             System.Console.WriteLine($"Welcome to the game, you are in {game.CurrentRoom.Name}");
+            game.Play();
             bool inRoom = true;
             while (inRoom)
             {
