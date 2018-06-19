@@ -123,6 +123,8 @@ namespace Frozen.Project
         }
         public void TakeItem(string itemName)
         {
+            TakeItem(itemName);
+            //need to call TakeItem function from room.cs line 33
             System.Console.WriteLine($"You have taken the {""}");
         }
         public void Help()

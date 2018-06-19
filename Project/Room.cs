@@ -24,17 +24,19 @@ namespace Frozen.Project
         public Room Go(string direction)
         {
             if (Directions.ContainsKey(direction))
-                return Directions(direction);
-                currentRoom.description
-        return exits[direction]
-        {
-                return null;
+            {
+                return Directions[direction];
             }
+            return null;
         }
 
-        public Item Takeitem(Item item)
+        public Item Takeitem(string item)
         {
-            Items.Find(i => i.Name.ToLower() = item)
+            Item found = Items.Find(i => i.Name.ToLower() == item );
+            if(found != null){
+                return found;
+            }
+            return null;
         }
         public void addDirection(Room room, string direction)
         {
