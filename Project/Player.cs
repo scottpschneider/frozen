@@ -6,9 +6,10 @@ namespace Frozen.Project
     {
         public List<Item> Inventory { get; set; }
     
-    public Player(string score, List<Item> inventory)
+    public Player()
     {
-        Inventory = inventory;
+        Inventory = new List<Item>();
+        
     }
     
     }

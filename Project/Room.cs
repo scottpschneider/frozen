@@ -34,6 +34,7 @@ namespace Frozen.Project
         {
             Item found = Items.Find(i => i.Name.ToLower() == item );
             if(found != null){
+                Items.Remove(found);
                 return found;
             }
             return null;
@@ -46,7 +47,7 @@ namespace Frozen.Project
 
         public void UseItem(Item item)
         {
-            throw new System.NotImplementedException();
+           
         }
     }
 }
