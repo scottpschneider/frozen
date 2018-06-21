@@ -39,7 +39,8 @@ namespace Frozen.Project
         {
             while (playing)
             {
-                System.Console.WriteLine("Would you like to go North(N) or South(S)?");
+                System.Console.WriteLine("Still up for an adventure? 'go' North(N) or South(S)?");
+                System.Console.WriteLine("You could also 'Look' at any time to see if there is anything you may care to 'Take' and 'Use'.");
 
                 string input = Console.ReadLine();
                 string[] inputArray = input.Split(" ");
@@ -76,6 +77,7 @@ namespace Frozen.Project
                         break;
                     case "Reset":
                         Console.Clear();
+                        Play();
                         break;
                     default:
                         Console.Clear();
@@ -120,7 +122,7 @@ namespace Frozen.Project
             Rooms.Add(room2);
             Rooms.Add(room3);
             setCurrentRoom(room0);
-            Item item1 = new Item("icicle", "You have picked up an icicle");
+            Item item1 = new Item("icicle", "ahh, A thing of beauty!!");
             Item item2 = new Item("goblet", "Ooh, a Golden Goblet!");
             Item item3 = new Item("sleigh", "Yes perhaps this sleigh will help me get out of the castle, and to the dance on time!");
             Item item4 = new Item("walkingStick", "Well this looks handy, try not to impale any snowmen..hehe");
@@ -174,7 +176,7 @@ namespace Frozen.Project
 
         public void PrintInventory()
         {
-            System.Console.WriteLine("In your inventory you have:");
+            System.Console.WriteLine("In your current inventory:");
             CurrentPlayer.Inventory.ForEach(item =>
             {
                 System.Console.WriteLine(item.Name + ": " + item.Description);
@@ -183,26 +185,19 @@ namespace Frozen.Project
 
         public void UseItem(string itemName)
         {
-            System.Console.WriteLine($"you are using the {itemName}");
-            // if (takenItem.Name == "Sleigh"){
-            // if find(CurrentPlayer.Inventory)
+            System.Console.WriteLine($"you are using the {itemName} gracefully");
+            // if (UseItem != null){
+            // }
             Item found = CurrentPlayer.Inventory.Find(i => i.Name.Contains(itemName));
             if (found != null)
             {
                 if (CurrentRoom.Name == "Elsa's Castle" && found.Name == "sleigh")
                 {
-                    System.Console.WriteLine("Congratulations, you used the Sleigh to arrive at the Ice Dance on time, celebrate!!");
-                    System.Console.WriteLine("you may move on to greener pastures, or choose reset to play again. ");
+                    System.Console.WriteLine("Congratulations, you used the Sleigh to arrive at the Ice Dance on time, YOU Win! celebrate!!");
+                    playing = false;
+                   // System.Console.WriteLine("you may move on to greener pastures, or choose reset to play again. ");
                 }
-
-
-
             }
-        
-
-            // }
-            //     System.Console.WriteLine("Congratulations, you used the Sleigh to arrive at the Ice Dance on time, celebrate!!");
-            //     System.Console.WriteLine("you may move on to greener pastures, or choose reset to play again. ");
         }
 
         public void Result(string winlose)
