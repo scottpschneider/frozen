@@ -39,7 +39,7 @@ namespace Frozen.Project
         {
             while (playing)
             {
-                System.Console.WriteLine("Still up for an adventure? 'go' North(N) or South(S)?");
+                System.Console.WriteLine("Still up for an adventure? Simply move North(N) or South(S)?");
                 System.Console.WriteLine("You could also 'Look' at any time to see if there is anything you may care to 'Take' and 'Use'.");
 
                 string input = Console.ReadLine();
@@ -48,8 +48,26 @@ namespace Frozen.Project
                 {
                     case "go":
                         Console.Clear();
-                        move(inputArray[1]);
+                        if (inputArray.Length > 1)
+                        {
+                            move(inputArray[1]);
+                        }
+                        else
+                        {
+                            System.Console.WriteLine("That direction is not recognized");
+                        }
                         //CurrentRoom = CurrentRoom.Go(inputArray[i] != null);
+                        break;
+                    case "move":
+                        Console.Clear();
+                        if (inputArray.Length > 1)
+                        {
+                            move(inputArray[1]);
+                        }
+                        else
+                        {
+                            System.Console.WriteLine("I don't go that direction");
+                        }
                         break;
                     case "use":
                         Console.Clear();
@@ -75,9 +93,9 @@ namespace Frozen.Project
                         Console.Clear();
                         PrintInventory();
                         break;
-                    case "Reset":
+                    case "reset":
                         Console.Clear();
-                        Play();
+                        Setup();
                         break;
                     default:
                         Console.Clear();
@@ -86,20 +104,7 @@ namespace Frozen.Project
                 }
 
             }
-            // }
-            // else
-            // {
-            //     Console.WriteLine("Whoops, slipped into a snow bank, cannot go that way!!");
-            // }
-            // {
-            // take user input
-            // input.split(")
-            // switch input[0]
-
-            // CurrentRoom = CurrentRoom.Go(imput[1] does not equal null)
-            // else {System.Console.WriteLine("Whoops no way")};
-            // }
-            //must initialize rooms bfore 
+  
         }
         public void Setup()
         {
@@ -107,8 +112,6 @@ namespace Frozen.Project
             Room room1 = new Room("Arrendale", "Surrounding you is a frozen tundra...");
             Room room2 = new Room("Elsa's Castle", "You have followed the icey steps up to a quiet castle");
             Room room3 = new Room(" The Ice Dance", "Now you are at an ice-dance, the center of attention!");
-            // room1.exits.Add("north", room2);
-            // room2.exits.Add("south", room1);
             room0.addDirection(room1, "north");
             room0.addDirection(room3, "south");
             room1.addDirection(room2, "north");
@@ -135,8 +138,6 @@ namespace Frozen.Project
         }
         public void TakeItem(string itemName)
         {
-            //Item.items.find(itemName);
-            //need to call TakeItem function from room.cs line 33
             Item takenItem = CurrentRoom.Takeitem(itemName);
             if (takenItem != null)
             {
@@ -195,7 +196,7 @@ namespace Frozen.Project
                 {
                     System.Console.WriteLine("Congratulations, you used the Sleigh to arrive at the Ice Dance on time, YOU Win! celebrate!!");
                     playing = false;
-                   // System.Console.WriteLine("you may move on to greener pastures, or choose reset to play again. ");
+                    // System.Console.WriteLine("you may move on to greener pastures, or choose reset to play again. ");
                 }
             }
         }
