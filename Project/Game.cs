@@ -97,6 +97,10 @@ namespace Frozen.Project
                         Console.Clear();
                         Setup();
                         break;
+                    case "notwin":
+                        Console.Clear();
+                        NotWin();
+                        break;
                     default:
                         Console.Clear();
                         Console.WriteLine("invalid command");
@@ -104,7 +108,7 @@ namespace Frozen.Project
                 }
 
             }
-  
+
         }
         public void Setup()
         {
@@ -153,7 +157,11 @@ namespace Frozen.Project
 
         public void Help()
         {
-            System.Console.WriteLine("You can choose from the following actions: go, use, take, help, or quit.");
+            System.Console.WriteLine("You can choose from the following actions: go, reset, use, take, inventory, help, notwin or quit.");
+        }
+        public void NotWin()
+        {
+            System.Console.WriteLine("You Lose, Game Over.");
         }
         public void Quit()
         {
@@ -196,6 +204,8 @@ namespace Frozen.Project
                 {
                     System.Console.WriteLine("Congratulations, you used the Sleigh to arrive at the Ice Dance on time, YOU Win! celebrate!!");
                     playing = false;
+
+                    //somehow you need to call the reset function here.. dontcha think
                     // System.Console.WriteLine("you may move on to greener pastures, or choose reset to play again. ");
                 }
             }
