@@ -6,6 +6,7 @@ namespace Frozen.Project
     public class Game : IGame
     {
         public Player CurrentPlayer { get; set; }
+        //since it is a public class it iwll be a public get and set
         public List<Room> Rooms = new List<Room>();
         public Room CurrentRoom { get; set; }
         // public List
@@ -28,6 +29,9 @@ namespace Frozen.Project
                 case "s":
                     setCurrentRoom(CurrentRoom.Directions["south"]);
                     break;
+                    // case "reset":
+                    // setCurrentRoom(CurrentRoom.Directions["Setup"]);
+                    // break;
                 default:
                     Console.WriteLine("Whoops, slipped into a snow bank, cannot go that way!!");
                     Console.WriteLine("I don't recognize that direction.");
@@ -148,6 +152,11 @@ namespace Frozen.Project
                 Console.WriteLine($"You have taken the {takenItem.Name}");
                 CurrentPlayer.Inventory.Add(takenItem);
             }
+            // {
+            //     if (CurrentRoom.Name == "Elsa's Castle" && found.Name == "sleigh")
+            //     {
+            //         System.Console.WriteLine("Congratulations, you used the Sleigh to arrive at the Ice Dance on time, YOU Win! celebrate!!");
+            //         playing = false;
             else
             {
                 System.Console.WriteLine("That item was not found here");
@@ -192,6 +201,7 @@ namespace Frozen.Project
             });
         }
 
+        
         public void UseItem(string itemName)
         {
             System.Console.WriteLine($"you are using the {itemName} gracefully");
@@ -204,9 +214,11 @@ namespace Frozen.Project
                 {
                     System.Console.WriteLine("Congratulations, you used the Sleigh to arrive at the Ice Dance on time, YOU Win! celebrate!!");
                     playing = false;
-
-                    //somehow you need to call the reset function here.. dontcha think
-                    // System.Console.WriteLine("you may move on to greener pastures, or choose reset to play again. ");
+                } else 
+                 if (CurrentRoom.Name == "Arrendale" && found.Name == "goblet")
+                {
+                    System.Console.WriteLine("Sorry, poisenous potion inside goblet, consumed, game over!.LOSE.");
+                    playing = false;
                 }
             }
         }
